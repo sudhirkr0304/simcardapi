@@ -12,7 +12,7 @@ public class SimRecord {
       private Long id;
         String simCardNo;
         String mobileNo;
-        String Status;
+        String status;
         String expiryDate;
         String stateOfRegistration;
         String kyc;
@@ -22,7 +22,7 @@ public class SimRecord {
         public SimRecord(String simCardNo, String mobileNo, String status, String expiryDate, String stateOfRegistration, String kyc, String telecomProvider, String name) {
             this.simCardNo = simCardNo;
             this.mobileNo = mobileNo;
-            Status = status;
+            status = status;
             this.expiryDate = expiryDate;
             this.stateOfRegistration = stateOfRegistration;
             this.kyc = kyc;
@@ -47,11 +47,11 @@ public class SimRecord {
         }
 
         public String getStatus() {
-            return Status;
+            return status;
         }
 
         public void setStatus(String status) {
-            Status = status;
+            status = status;
         }
 
         public String getExpiryDate() {
