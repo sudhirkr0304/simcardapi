@@ -23,7 +23,8 @@ public class SimCardApiController {
             simCardService.saveData(simRecord);
         }
         catch (Exception e) {
-            return "error";
+            e.printStackTrace();
+            return "error" +e.getLocalizedMessage();
         }
 
 
