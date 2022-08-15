@@ -18,17 +18,25 @@ public class SimCardApiController {
     }
 
     @PostMapping("/add")
-    public String addSimRecord(@RequestBody SimRecord simRecord) {
+    public SimRecord addSimRecord(@RequestBody SimRecord simRecord) {
+        SimRecord simRecord1 = new SimRecord("11","11","11","11" ,"11","11","11","11");
+
         try {
-            simCardService.saveData(simRecord);
+            if(simRecord == null) {
+                simCardService.saveData(simRecord1);
+            }
+            else {
+                simCardService.saveData(simRecord);
+            }
+
         }
         catch (Exception e) {
             e.printStackTrace();
-            return "error" +e.getLocalizedMessage();
+            return simRecord;
         }
 
 
-        return "ok";
+        return simRecord;
     }
 
 //    @GetMapping("/listall")
