@@ -18,9 +18,16 @@ public class SimCardApiController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity addSimRecord(@RequestBody SimRecord simRecord) {
-        simCardService.saveData(simRecord);
-        return ResponseEntity.ok().build();
+    public String addSimRecord(@RequestBody SimRecord simRecord) {
+        try {
+            simCardService.saveData(simRecord);
+        }
+        catch (Exception e) {
+            return e.getMessage();
+        }
+
+
+        return "ok";
     }
 
 //    @GetMapping("/listall")
