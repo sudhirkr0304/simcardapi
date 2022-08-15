@@ -24,8 +24,15 @@ public class SimCardApiController {
     public ResponseEntity<String> addSimRecord(@RequestBody SimRecord simRecord) {
         
         if(simRecord != null) {
-            simCardService.saveData(simRecord);
-            return ResponseEntity.status(HttpStatus.OK).body("Data Interested..");
+            try {
+                simCardService.saveData(simRecord);
+                return ResponseEntity.status(HttpStatus.OK).body("Data Interested..");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
+            }
+
         }
         else {
             HttpStatus badRequest = HttpStatus.BAD_REQUEST;
