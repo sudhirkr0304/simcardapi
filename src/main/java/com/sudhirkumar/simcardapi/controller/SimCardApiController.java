@@ -2,6 +2,7 @@ package com.sudhirkumar.simcardapi.controller;
 
 import com.sudhirkumar.simcardapi.entity.SimRecord;
 import com.sudhirkumar.simcardapi.service.SimCardService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,32 +19,23 @@ public class SimCardApiController {
     }
 
     @PostMapping("/add")
-    public SimRecord addSimRecord(@RequestBody SimRecord simRecord) {
-        SimRecord simRecord1 = new SimRecord("11","11","11","11" ,"11","11","11","11");
-
-        try {
-            if(simRecord == null) {
-                simCardService.saveData(simRecord1);
-            }
-            else {
-                simCardService.saveData(simRecord);
-            }
-
+    public ResponseEntity<String> addSimRecord(@RequestBody SimRecord simRecord) {
+        
+        if(simRecord != null) {
+            simCardService.saveData(simRecord);
+            return ResponseEntity.status(HttpStatus.OK).body("Data Interested..");
         }
-        catch (Exception e) {
-            e.printStackTrace();
-            return simRecord;
+        else {
+            HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("incorrect data format");
         }
-
-
-        return simRecord;
+        
     }
 
-//    @GetMapping("/listall")
-//    public List<SimRecord> listAllRecord() {
-//        List<SimRecord> list = new ArrayList<>();
-//        return list;
-//    }
+    @GetMapping("/listall")
+    public List<SimRecord> listAllRecord() {
+        return simCardService.getAll();
+    }
 //
 //    @PutMapping("/:id")
 //    public SimRecord updateRecord() {
