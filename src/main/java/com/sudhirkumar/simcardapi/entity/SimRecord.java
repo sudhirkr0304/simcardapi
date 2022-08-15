@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class SimRecord {
       @Id
-      @GeneratedValue
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
         String simCardNo;
         String mobileNo;
