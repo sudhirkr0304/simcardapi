@@ -2,6 +2,7 @@ package com.sudhirkumar.simcardapi.controller;
 
 import com.sudhirkumar.simcardapi.entity.SimRecord;
 import com.sudhirkumar.simcardapi.service.SimCardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 public class SimCardApiController {
+    @Autowired
     private  SimCardService simCardService;
     @GetMapping("/")
     public ResponseEntity hello() {
