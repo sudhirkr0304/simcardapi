@@ -1,11 +1,9 @@
 package com.sudhirkumar.simcardapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "sim_record")
 public class SimRecord {
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
