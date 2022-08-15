@@ -22,7 +22,8 @@ public class SimCardApiController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addSimRecord(@RequestBody SimRecord simRecord) {
-        
+        SimRecord simRecord1 = new SimRecord("11","11","11","11","11","11","11","11");
+        simCardService.saveData(simRecord1);
         if(simRecord != null) {
             try {
                 simCardService.saveData(simRecord);
